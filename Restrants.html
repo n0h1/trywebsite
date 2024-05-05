@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<Title>TechFood</Title>
+<link rel= "stylesheet" href="project.css">
+<script src="alljs.js"></script>
+
+</head>
+
+
+
+<body>
+      <header>
+   
+        <a href="Home_Page.html" ><img src="image/Tech.png" id="logo" alt="logo" width="180" height="180"> </a> 
+        <button id="theme-toggle">*theme*</button>
+
+        <h1 id="Cus_dashboard">Customer's dashboard</h1>
+        <h2 id="res">restaurants</h2>
+        <h3 id="week-start">Week starting: </h3>
+
+
+            <div id='navigation'>
+                <p> <a href="Owner's_Dashboard.html">Owner's_Dashboard</a>  |  <a href="Restrants.html">Customer's_Dashboard</a>  |   <a href="ResturantPage.html">Current Restaurants</a> </p>
+                </div>
+
+                <div id="breadcrumb">
+                    <p> <a href="Home_Page.html">Home Page</a>  > <a href="Restrants.html">Restaurants </a>  </p>
+                   </div>
+        
+       </header> 
+
+       <main>
+        
+       
+    <div class="offers"> 
+
+        <div id="offer1">
+            <a href="cat11.html"> <img src="image/max2.png" alt="Mexican restaurant"  width="150" height="150"  ></a> 
+
+              <div class="rating">
+                  <span class="star">&#9733;</span> 
+                  <span class="star">&#9733;</span> 
+                  <span class="star">&#9733;</span> 
+                  <span class="star">&#9734;</span> 
+                  <span class="star">&#9734;</span> 
+                  
+            </div>
+            <label>Mexican restaurant </label> <br>
+           
+
+            <p> Enjoy  all Mexican food . Don't miss this chance to try your favorite dishes or something new </p> 
+        </div>
+
+
+
+
+        <div id="offer2" >
+            <a href="cat11.html"> <img src="image/as11.png" alt="seafoodOff" width="150" height="150"></a>
+              
+              <div class="rating">
+                <span class="star">&#9733;</span> 
+                <span class="star">&#9734;</span> 
+                <span class="star">&#9734;</span> 
+                <span class="star">&#9734;</span> 
+                <span class="star">&#9734;</span> 
+            </div>
+              <label>Asian restaurant</label><br>
+
+            <p>Explore the diverse world of Asian cuisine , we have something to satisfy every craving. </p> 
+        </div>
+
+        <div id="offer3"  >
+            <a href="cat11.html"> <img src="image/as2.jpg" alt="riceOffer" width="150" height="150"></a> <br>
+         <div class="rating">
+            <span class="star">&#9733;</span> 
+            <span class="star">&#9733;</span> 
+            <span class="star">&#9733;</span> 
+            <span class="star">&#9733;</span> 
+            <span class="star">&#9734;</span> 
+        </div>
+            <label> Rice restaurant</label><br>
+            <p> try the rice bowl, featuring tender chicken, a perfectly poached egg, and a medley of fresh herbs.</p>
+        </div>
+        <div id="offer4"  >
+            <a href="cat11.html"> <img src="image/pan.png" alt="pancakewitheggOff" width="150" height="150"></a> <br>
+             <div class="rating">
+                <span class="star">&#9733;</span> 
+                <span class="star">&#9733;</span> 
+                <span class="star">&#9733;</span> 
+                <span class="star">&#9734;</span> 
+                <span class="star">&#9734;</span> 
+            </div>
+            <label>sweet restaurant</label><br>
+            <p>  we have delicious  Pancake!! </p> 
+        </div>
+
+        <div id="offer5" >
+            <a href="cat11.html"> <img src="image/brg.png" alt="burgerOff" width="150" height="150"> </a> <br>
+            <div class="rating">
+                <span class="star">&#9733;</span> 
+                <span class="star">&#9733;</span> 
+                <span class="star">&#9733;</span> 
+                <span class="star">&#9734;</span> 
+                <span class="star">&#9734;</span> 
+            </div>
+            <label> amircan taste</label><br>
+            <p>  It's the perfect time to grab the taste of America </p> 
+        </div>
+
+        <div id="offer6"  >
+            <a href="cat11.html"> <img src="image/maxc1.png" alt="toforiceOff" width="150" height="150"></a> <br>
+           <div class="rating">
+            <span class="star">&#9733;</span> 
+            <span class="star">&#9733;</span> 
+            <span class="star">&#9733;</span> 
+            <span class="star">&#9734;</span> 
+            <span class="star">&#9734;</span> 
+      </div>
+           
+            <label>Mexican taste </label><br>
+            <p> the best taco in the world !! </p> 
+        </div>
+    </div>
+    <button id="show-more">More</button>
+
+
+    
+   
+    
+
+
+    
+        
+    
+
+       <footer>
+        <h3>Contact Info :</h3>
+         <div id="contact" >
+        <p>Phone Number: 05xxxxxxxxx</p>
+        <p>Email: TechFood@hotmail.com</p>
+        <img src="image/youtube.webp"  class="icon" alt="youtube" width="35" height="35">
+        <img src="image/xx.PNG" class="icon" alt="X" width="35" height="25">
+        <img src="image/insta.webp" class="icon" alt="Instagram" width="35" height="35">
+        <img src="image/Facebook.PNG" class="icon" alt="Facebook" width="38" height="40">
+        <img src="image/linkedIn.PNG" class="icon" alt="LinkedIn" width="38" height="40">
+        
+
+         </div>
+
+        <p id="copy"> &copy; 2024 Techfood</p>
+       </footer>
+       <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    displayWeekStartDate(); // Existing function to display the week's start date
+
+    const offers = document.querySelectorAll('.offers div');
+    const showMoreBtn = document.getElementById('show-more');
+    let maxVisible = 3; // Initial number of visible offers
+    let incrementStep = 3; // Number of offers to show each time "More" is clicked
+
+    // Initially display the first 'maxVisible' offers
+    updateOfferVisibility();
+
+    showMoreBtn.addEventListener('click', function() {
+        maxVisible += incrementStep; // Increase the limit
+        updateOfferVisibility(); // Update which offers are visible
+
+        // Hide "More" button if all offers are visible
+        if (maxVisible >= offers.length) {
+            showMoreBtn.style.display = 'none';
+        }
+    });
+
+    function updateOfferVisibility() {
+        offers.forEach((offer, index) => {
+            if (index < maxVisible) {
+                offer.classList.remove('hide');
+            } else {
+                offer.classList.add('hide');
+            }
+        });
+    }
+    offers.forEach(offer => {
+                offer.addEventListener('mouseenter', function() {
+                    const imageName = this.querySelector('img').alt;
+                    const imageSrc = this.querySelector('img').src;
+                    const label = this.querySelector('label').textContent;
+                    const rating = this.querySelector('.rating').innerHTML;
+                    const description = this.querySelector('p').textContent;
+        
+                    const detailDiv = document.createElement('div');
+                    detailDiv.style.position = 'absolute';
+                    detailDiv.style.backgroundColor = 'white';
+                    detailDiv.style.border = '1px solid black';
+                    detailDiv.style.padding = '10px';
+                    detailDiv.style.width = '200px';
+                    detailDiv.style.zIndex = '1000';
+        
+                    detailDiv.innerHTML = `
+                        <img src="${imageSrc}" alt="${imageName}" width="50" height="50">
+                        <strong>${label}</strong><br>
+                        ${rating}<br>
+                        <small>${description}</small>
+                    `;
+        
+                    this.appendChild(detailDiv);
+                });
+        
+                offer.addEventListener('mouseleave', function() {
+                    this.removeChild(this.lastChild);
+                     // Assumes the last child is the detail div
+                });
+            });
+        });
+        
+    function displayWeekStartDate() {
+    const today = new Date();
+    // Ensure we consider the time as well so that the calculation doesn't go to the previous day due to time being 00:00:00
+    today.setHours(0, 0, 0, 0);
+    const dayOfWeek = today.getDay(); // Sunday - 0, Monday - 1, etc.
+    // Calculate last Sunday based on today's day of the week
+    const weekStart = new Date(today.setDate(today.getDate() - dayOfWeek));
+
+    const weekStartDisplay = document.getElementById('week-start');
+    weekStartDisplay.textContent += weekStart.toLocaleDateString('en-US', {
+        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+    });
+}
+
+    // Your existing code for mouseenter and mouseleave goes here
+
+
+
+        </script>
+        
+    
+
+    
+        
+    
+        
+   
+        
+       
+</body>
+
+
+</html>

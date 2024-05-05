@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechFood</title>
+  <link rel="stylesheet" href="project.css">
+  <script src="alljs.js"></script>
+ 
+
+
+</head>
+
+<body>
+
+     <header>
+     
+
+        <a href="Home_Page.html" ><img src="image/Tech.png" id="logo" alt="logo" width="180" height="180"> </a> 
+        <button id="theme-toggle">*Theme*</button>
+
+        <h1 id="Cus_dashboard">Customer's dashboard</h1>
+
+            <div id='navigation'>
+                <p> <a href="Owner's_Dashboard.html">Owner's_Dashboard</a>  |  <a href="Restrants.html">Customer's_Dashboard</a>  |   <a href="ResturantPage.html">Current Restaurants</a> </p>
+                </div>
+
+                <div id="breadcrumb">
+                    <p> <a href="Home_Page.html">Home Page</a>  >  <a href="cat11.html">meals Categories</a> > <a href="cat2.html">juices</a></p>
+                   </div>
+       </header> 
+
+      
+    <main>
+        <div class="heading">
+        <h1>Restaurant Page</h1>
+         <h2 >restaurant 1</h2>
+        </div>
+
+        <section class="meal-listing">
+            <h1 class="heading">juice</h1>
+            <button id="sortPrice">Sort by Price</button>
+<button id="sortName">Sort by Restaurant Name</button>
+
+            <table>
+                
+                <thead>
+                    <tr>
+                        <th>Meal Name</th>
+                        <th>Price</th>
+                        <th>Calories</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    
+                        <tr>
+                           
+                            <td>
+                                <img src="image/orange.png" alt="orange juice" class="meal-image"> orange juice
+                                <input type="checkbox" class="meal-checkbox" checked style="margin-right: 1em;"> <!-- Checkbox added to the first cell -->
+
+                            </td>
+                            <td>24SR</td>
+                            <td>80</td>
+                            <td>orange juice</td>
+                            <td>
+                                <div style="display: flex; align-items: center;">
+                                    <button type="button" class="add-cart-btn" style="margin-right: 10px;">
+                                        <img src="image/cart.png" class="add-cart-icon" alt="Add to Cart">
+                                        <i class="fas fa-shopping-cart" style="font-size: 12px;"></i>
+                                    </button>
+                                    <button type="button" class="quantity-btn">+</button>
+                                    <span id="orange-juice-quantity">0</span>
+                                    <button type="button" class="quantity-btn">-</button>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                    
+                    
+                    
+
+                    <tr>
+                        <td><img src="image/blu.png" alt="blue mojito" class="meal-image" > blue mojito
+                            <input type="checkbox" name="meal" value="bluemojito">
+                        </td>
+                        <td>29SR</td>
+                        <td>160</td>
+                        <td>blue mojito</td>
+                        <td>
+                            <div style="display: flex; align-items: center;">
+                                <button type="button" class="add-cart-btn" style="margin-right: 10px;">
+                                    <img src="image/cart.png" class="add-cart-icon" alt="Add to Cart">
+                                    <i class="fas fa-shopping-cart" style="font-size: 12px;"></i>
+                                </button>
+                                <button type="button" class="quantity-btn">+</button>
+                                <span id="blue mojito-quantity">0</span>
+                                <button type="button" class="quantity-btn"  >-</button>
+                       
+                              </div>
+                              </td>
+                    </tr>
+
+                    <tr>
+                        <td><img src="image/str.png" alt="Strawberry juice" class="meal-image" >Strawberry juice
+                            <input type="checkbox" name="meal" value="Strawberry juice">
+                        </td>
+                        <td>24SR</td>
+                        <td>100</td>
+                        <td>Strawberry juiceo</td>
+                        <td>
+                            <div style="display: flex; align-items: center;">
+                        <button type="button" class="add-cart-btn" style="margin-right: 10px;">
+                            <img src="image/cart.png" class="add-cart-icon" alt="Add to Cart">
+                            <i class="fas fa-shopping-cart" style="font-size: 12px;"></i>
+                        </button>
+                       
+                             <button type="button" class="quantity-btn" >+</button>
+                                <span id="Strawberry juice-quantity">0</span>
+                                <button type="button" class="quantity-btn"  >-</button>
+                              </div>
+                              </td>
+                    </tr>                 
+                
+                
+                
+                </tbody>
+            </table>
+        </section>
+
+         <a href="cart_page.html"><button class="cart-button">
+            <img src="image/cart.jpeg" alt="Cart" width="50" height="50">
+        </button> </a>
+    </main>
+
+    
+<div>
+    <div class="tab" onclick="navigateTo('Home_Page.html')"><a href="Home_Page.html">Home page</a> </div>
+  <div class="tab" onclick="navigateTo('meals Categories')"><a href="cat11.html">meals Categories</a></div>
+  <div class="tab" onclick="navigateTo('juices')"><a href="cat2.html">juices</a></div>  
+  </div>
+  
+  
+
+
+    <footer>
+        <h3>Contact Info :</h3>
+         <div id="contact" >
+        <p>Phone Number: 05xxxxxxxxx</p>
+        <p>Email: TechFood@hotmail.com</p>
+        <img src="image/youtube.webp"  class="icon" alt="youtube" width="35" height="35">
+        <img src="image/xx.PNG" class="icon" alt="X" width="35" height="25">
+        <img src="image/insta.webp" class="icon" alt="Instagram" width="35" height="35">
+        <img src="image/Facebook.PNG" class="icon" alt="Facebook" width="38" height="40">
+        <img src="image/linkedIn.PNG" class="icon" alt="LinkedIn" width="38" height="40">
+        
+
+         </div>
+
+        <p id="copy"> &copy; 2024 Techfood</p>
+       </footer>
+       <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sorting function
+            function sortTableBy(column, isNumeric) {
+                const table = document.querySelector("table tbody");
+                const rows = Array.from(table.querySelectorAll('tr'));
+        
+                rows.sort((a, b) => {
+                    let valA = a.cells[column].innerText;
+                    let valB = b.cells[column].innerText;
+        
+                    if (isNumeric) {
+                        // Extract numeric values for sorting by price
+                        valA = parseFloat(valA.replace(/[^0-9\.]/g, ""));
+                        valB = parseFloat(valB.replace(/[^0-9\.]/g, ""));
+                    } else {
+                        valA = valA.toLowerCase();
+                        valB = valB.toLowerCase();
+                    }
+        
+                    return valA > valB ? 1 : valA < valB ? -1 : 0;
+                });
+        
+                // Re-adding rows in sorted order
+                rows.forEach(row => table.appendChild(row));
+            }
+        
+            // Function to handle quantity change
+            function adjustQuantity(event) {
+                if (!event.target.classList.contains('quantity-btn')) return;
+        
+                const button = event.target;
+                const itemContainer = button.closest('tr');
+                const itemName = itemContainer.querySelector('.meal-image').alt.trim();
+                const quantityDisplay = itemContainer.querySelector('span');
+                let quantity = parseInt(quantityDisplay.innerText, 10);
+        
+                quantity = button.textContent === '+' ? quantity + 1 : Math.max(quantity - 1, 0);
+                quantityDisplay.innerText = quantity;
+        
+                updateCart(itemName, quantity);
+            }
+        
+            // Function to update cart in local storage
+            function updateCart(itemName, quantity) {
+                let cart = JSON.parse(localStorage.getItem('cart')) || {};
+                if (quantity > 0) {
+                    cart[itemName] = quantity;
+                } else {
+                    delete cart[itemName]; // Remove the item if its quantity is zero
+                }
+                localStorage.setItem('cart', JSON.stringify(cart));
+            }
+        
+            // Attaching event listeners
+            const sortPriceBtn = document.querySelector('button:nth-of-type(1)');
+            const sortNameBtn = document.querySelector('button:nth-of-type(2)');
+            
+            sortPriceBtn.addEventListener('click', () => sortTableBy(1, true)); // Assuming price is the second column
+            sortNameBtn.addEventListener('click', () => sortTableBy(0, false)); // Assuming name is the first column
+        
+            // Delegating quantity button clicks to the main section to avoid duplication
+            const mealListingSection = document.querySelector('.meal-listing');
+            mealListingSection.addEventListener('click', adjustQuantity);
+        });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Sorting function
+                function sortTableBy(column, isNumeric) {
+                    const table = document.querySelector("table tbody");
+                    const rows = Array.from(table.querySelectorAll('tr'));
+            
+                    rows.sort((a, b) => {
+                        let valA = a.cells[column].innerText;
+                        let valB = b.cells[column].innerText;
+            
+                        if (isNumeric) {
+                            // Extract numeric values for sorting by price
+                            valA = parseFloat(valA.replace(/[^0-9\.]/g, ""));
+                            valB = parseFloat(valB.replace(/[^0-9\.]/g, ""));
+                        } else {
+                            valA = valA.toLowerCase();
+                            valB = valB.toLowerCase();
+                        }
+            
+                        return valA > valB ? 1 : valA < valB ? -1 : 0;
+                    });
+            
+                    // Re-adding rows in sorted order
+                    rows.forEach(row => table.appendChild(row));
+                }
+            
+                // Attaching event listeners to specific sort buttons by adding unique IDs
+                document.getElementById('sortPrice').addEventListener('click', () => sortTableBy(1, true)); // Assumes price is the second column
+                document.getElementById('sortName').addEventListener('click', () => sortTableBy(0, false)); // Assumes name is the first column
+            });
+            
+            // Ensure the buttons in the HTML are clearly marked
+            </script>
+            
+        
+    
+
+          
+</body>
+</html>
+
+
+
+    

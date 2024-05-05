@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>TechFood</title>
+    <link rel="stylesheet" href="project.css">
+    <script src="alljs.js"></script>
+</head>
+<body>
+    <header>
+        <a href="Home_Page.html"><img src="image/Tech.png" id="logo" alt="logo" width="180" height="180"></a> 
+        <button id="theme-toggle">Toggle Theme</button>
+        <h1 id="M_D_Offers">Make/Delete offers</h1>
+        <div id='navigation'>
+            <p><a href="Owner's_Dashboard.html">Owner's_Dashboard</a> | <a href="Restrants.html">Customer's_Dashboard</a> | <a href="ResturantPage.html">Current Restaurants</a></p>
+        </div>
+        <div id="breadcrumb">
+            <p><a href="Home_Page.html">Home Page</a> > <a href="Owner's_Dashboard.html">Owner's_Dashboard</a> > <a href="Make_Delete_Offers.html">Make Or Delete</a></p>
+        </div>
+    </header> 
+    <main>
+        <div class="offers-container">
+            <h1 id="Avail-off">Available Offers</h1>
+            <ul class="offers-list">
+
+                <li class="offer-item">
+                    <input type="checkbox">
+                    <img src="image/tacoOffer.jpg" id="off1" alt="tacoOfferr" width="100" height="100"> 
+                    <label class="offer-description">Mexican Food Frenzy!</label>
+                    <button class="delete-button">Delete</button>
+                </li>
+
+                <li class="offer-item">
+                    <input type="checkbox">
+                    <img src="image/seafoodOff.jpg" id="off2" alt="seafoodOff" width="100" height="100">
+                    <label class="offer-description">Asian Flavors</label>
+                    <button class="delete-button">Delete</button>
+                </li>
+
+                <li class="offer-item">
+                    <input type="checkbox">
+                    <img src="image/riceOffer.jpg" id="off3" alt="riceOffer" width="100" height="100">
+                    <label class="offer-description">Savory Rice Bowl Delight</label>
+                    <button class="delete-button">Delete</button>
+                </li>
+
+                <li class="offer-item">
+                    <input type="checkbox">
+                    <img src="image/pancakewitheggOff.jpg" id="off4" alt="pancakewitheggOff" width="100" height="100">
+                    <label class="offer-description">Prosciutto and Egg Dutch Delight</label>
+                    <button class="delete-button">Delete</button>
+                </li>
+
+                <li class="offer-item">
+                    <input type="checkbox">
+                    <img src="image/burgerOff.jpg" id="off5" alt="burgerOff" width="100" height="100">
+                    <label class="offer-description">Half-Price Americana!</label>
+                    <button class="delete-button">Delete</button>
+                </li>
+
+                <li class="offer-item">
+                    <input type="checkbox">
+                    <img src="image/toforiceOff.jpg" id="off6" alt="toforiceOff.jpg" width="100" height="100">
+                    <label class="offer-description">Weekend Delights!</label>
+                </ul>
+                <button onclick="deleteOffers()">Delete Selected Offers</button>
+            </div>
+            <fieldset>
+                <legend>Add New Offer Form</legend>
+                <form id="newOfferForm">
+                    <ul>
+                        <div class="Off_input">
+                            <li><label for="Offname">Name of the meal:</label></li> 
+                            <input type="text" name="Offn" id="Offname"><br>
+                        </div>
+                        <div class="Off_input">
+                            <li><label for="OffPhoto">Upload offer Photo:</label><br></li>
+                            <input type="file" id="OffPhoto" name="Offph"><br>
+                        </div>
+                        <div class="Off_input">
+                            <li><label for="Offdes">Description of the meal:</label></li><br>
+                            <textarea name="offdec" id="Offdes" rows="6" cols="64" placeholder="Write a description here!"></textarea><br>
+                        </div>
+                        <button type="button" onclick="submitOffer()">Submit</button>
+                    </ul>
+                </form>
+            </fieldset>
+        </main>
+        <footer>
+            <h3>Contact Info :</h3>
+            <div id="contact">
+                <p>Phone Number: 05xxxxxxxxx</p>
+                <p>Email: TechFood@hotmail.com</p>
+                <img src="image/youtube.webp" class="icon" alt="youtube" width="35" height="35">
+                <img src="image/xx.PNG" class="icon" alt="X" width="35" height="25">
+                <img src="image/insta.webp" class="icon" alt="Instagram" width="35" height="35">
+                <img src="image/Facebook.PNG" class="icon" alt="Facebook" width="38" height="40">
+                <img src="image/linkedIn.PNG" class="icon" alt="LinkedIn" width="38" height="40">
+            </div>
+            <p id="copy">© 2024 Techfood</p>
+        </footer>
+        <script>
+            // Example array of objects for offers
+            let offers = [
+                {id: 1, name: "Mexican Food Frenzy!", img: "image/tacoOffer.jpg", desc: "Taco specials all week!"},
+                {id: 2, name: "Asian Flavors", img: "image/seafoodOff.jpg", desc: "Delicious seafood from the East."},
+                {id: 3, name: "Savory Rice Bowl Delight", img: "image/riceOffer.jpg", desc: "Tasty and healthy rice bowls."},
+                // More offers can be added here
+            ];
+    
+            function renderOffers() {
+                const offersList = document.querySelector('.offers-list');
+                offersList.innerHTML = ''; // Clear the list first
+                offers.forEach(offer => {
+                    offersList.innerHTML += `
+                        <li class="offer-item">
+                            <input type="checkbox" data-id="${offer.id}">
+                            <img src="${offer.img}" alt="${offer.name}" width="100" height="100">
+                            <label class="offer-description">${offer.name}</label>
+                        </li>`;
+                });
+            }
+    
+            function deleteOffers() {
+                const selectedOffers = document.querySelectorAll('.offers-list input[type="checkbox"]:checked');
+                if (selectedOffers.length === 0) {
+                    alert("Please select at least one offer to delete.");
+                    return;
+                }
+                if (!confirm("Are you sure you want to delete the selected offers?")) return;
+                selectedOffers.forEach(checkbox => {
+                    offers = offers.filter(offer => offer.id !== parseInt(checkbox.dataset.id));
+                });
+                renderOffers(); // Re-render the list after deletion
+            }
+    
+            function submitOffer() {
+                const name = document.getElementById('Offname').value.trim();
+                const description = document.getElementById('Offdes').value.trim();
+                const photo = document.getElementById('OffPhoto').files[0]; // Assuming you handle file uploads on the server-side
+    
+                if (!name || !description || !photo) {
+                    alert("Please fill out all fields and select a photo.");
+                    return;
+                }
+    
+                // Assuming the ID and image path handling are managed server-side
+                offers.push({
+                    id: offers.length + 1, // Simple increment for demo purposes
+                    name: name,
+                    img: URL.createObjectURL(photo), // For display purposes only
+                    desc: description
+                });
+                renderOffers();
+                document.getElementById('newOfferForm').reset(); // Reset the form after submission
+            }
+    
+            renderOffers(); // Initial rendering of offers
+        </script>
+    </body>
+    </html>

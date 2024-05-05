@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title> techfood</title>
+<link rel= "stylesheet" href="project.css">
+<script src="alljs.js"></script>
+
+<style>
+  header{margin-bottom: 1%;}
+  #fristborde{border: solid; }
+  h2{text-align: center;font-size:medium;}
+  #secondborder{border: solid;}
+  p{margin-left: 1%;}
+  button.prodects{  margin-inline: 45em;margin-bottom:1%;}
+  button.checkout{  margin-inline: 45em;margin-bottom:1%;}
+</style>
+
+</head> 
+
+<body>
+
+  <header>
+    <button id="theme-toggle">*theme*</button>
+
+    <a href="Home_Page.html" ><img src="image/Tech.png" id="logo" alt="logo" width="180" height="180"> </a> 
+
+    <h1 id="cart_Page">cart</h1>
+
+        <div id='navigation'>
+          <p> <a href="Owner's_Dashboard.html">Owner's_Dashboard</a>  |  <a href="Restrants.html">Customer's_Dashboard</a>  |   <a href="ResturantPage.html">Current Restaurants</a> </p>
+            </div>
+
+            <div id="breadcrumb">
+              <p> <a href="Home_Page.html">Home Page</a>  >  <a href="ResturantPage.html">Resturant</a> > <a href="cart_page.html">Cart</a></p>
+             </div>
+    
+   </header>  
+
+         <main>
+         
+          <div id="fristborde">
+          <h2 >cart</h2><hr>
+         <table>
+        <tr>
+        <th><img src="image/salad22.jpg" class="meales" alt="meal1" width="45" height="50"> </th>
+        <th>meal A<br>20.00</th>
+        <td>
+          <button class="quantity-btn remove" onclick="decreaseQuantity('mealB')">+</button>
+          <span id="quantity-mealB">1</span>
+          <button class="quantity-btn add" onclick="increaseQuantity('mealB')">-</button>
+        </td>
+        </tr>
+        <tr>
+          <th><img src="image/cha.jpg" class="meales" alt="meal1" width="45" height="50"> </th>
+        <th>meal B<br>30.00</th>
+        <td>
+          <button class="quantity-btn remove" onclick="decreaseQuantity('mealB')">+</button>
+          <span id="quantity-mealB">2</span>
+          <button class="quantity-btn add" onclick="increaseQuantity('mealB')">-</button>
+        </td>
+        </tr>
+        <tr>
+        <th><img src="image/OIP.jpg" class="meales" alt="meal1" width="45" height="50"> </th>
+        <th>meal C<br>10.00</th>
+        <td>
+          <button class="quantity-btn remove" onclick="decreaseQuantity('mealB')">+</button>
+          <span id="quantity-mealB">1</span>
+          <button class="quantity-btn add" onclick="increaseQuantity('mealB')">-</button>
+        </td>
+        </tr>
+         </table>
+         <button class="prodects">add more products</button>
+        </div>
+        <pre></pre>
+        <div id="secondborder" >
+        <h2 >order summary</h2><hr>
+        <p>total quantity :4</p>
+        <p>total price:60.00</p>
+        
+        <a href="ResturantEval.html"><button class="checkout">Checkout</button> </a>
+          
+        </div>
+        
+       </main>
+
+       <footer>
+        <h3>Contact Info :</h3>
+         <div id="contact" >
+        <p>Phone Number: 05xxxxxxxxx</p>
+        <p>Email: TechFood@hotmail.com</p>
+        <img src="image/youtube.webp"  class="icon" alt="youtube" width="35" height="35">
+        <img src="image/xx.PNG" class="icon" alt="X" width="35" height="25">
+        <img src="image/insta.webp" class="icon" alt="Instagram" width="35" height="35">
+        <img src="image/Facebook.PNG" class="icon" alt="Facebook" width="38" height="40">
+        <img src="image/linkedIn.PNG" class="icon" alt="LinkedIn" width="38" height="40">
+        
+
+         </div>
+
+        <p id="copy"> &copy; 2024 Techfood</p>
+       </footer>    
+       <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || {};
+    const table = document.querySelector('table tbody');
+
+    // Function to update cart display
+    function updateCartDisplay() {
+        table.innerHTML = ''; // Clear existing entries
+        let totalQuantity = 0;
+        let totalPrice = 0;
+
+        Object.keys(cart).forEach(itemName => {
+            const quantity = cart[itemName];
+            totalQuantity += quantity;
+            // Assuming you have a way to get the price, here it's just an example
+            const price = 20; // Example price
+            totalPrice += price * quantity;
+
+            // Create row for each item
+            const row = `<tr>
+                <td>${itemName}</td>
+                <td>${price}</td>
+                <td>${quantity}</td>
+                <td>$${(price * quantity).toFixed(2)}</td>
+            </tr>`;
+            table.innerHTML += row;
+        });
+
+        // Update total quantity and price
+        document.querySelector('#total-quantity').innerText = totalQuantity;
+        document.querySelector('#total-price').innerText = `$${totalPrice.toFixed(2)}`;
+    }
+
+    updateCartDisplay(); // Update cart display on page load
+
+    // Event listeners for quantity buttons would go here, similar to the restaurant page
+});
+</script>
+                          
+</body>
+</html>

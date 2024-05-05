@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechFood</title>
+    <link rel="stylesheet" href="project.css">
+    <script src="alljs.js"></script>
+</head>
+
+<body>
+<header>
+    <button id="theme-toggle">Toggle Theme</button>
+    <a href="Home_Page.html"><img src="image/Tech.png" id="logo" alt="logo" width="180" height="180"></a> 
+    <h1 id="New_cuis">Add New Cuisine</h1>
+    <div id='navigation'>
+        <p> <a href="Owner's_Dashboard.html">Owner's_Dashboard</a> | <a href="Restrants.html">Customer's_Dashboard</a> | <a href="ResturantPage.html">Current Restaurants</a> </p>
+    </div>
+    <div id="breadcrumb">
+        <p> <a href="Home_Page.html">Home Page</a> > <a href="Owner's_Dashboard.html">Owner's_Dashboard</a> > <a href="New_Cuisine.html">Add new Cuisine </a> </p>
+    </div>
+</header>
+
+<main>
+    <fieldset>
+        <legend>Add a New Cuisine Form</legend>
+        <form id="newCuisineForm">
+            <ul>
+                <div class="cuis_input">
+                    <li><label for="Mname">Name of the meal:</label></li>
+                    <input type="text" name="Mn" id="Mname"><br>
+                </div>
+                <div class="cuis_input">
+                    <li><label for="Mphoto">Upload Photo of the meal:</label><br></li>
+                    <input type="file" id="Mphoto" name="Mph"><br>
+                </div>
+                <div class="cuis_input">
+                    <li><label for="Mpri">The Price:</label></li>
+                    <input type="text" name="Mpri" id="Mpri"><br>
+                </div>
+                <div class="cuis_input">
+                    <li><label for="Mcal">The Calories:</label></li>
+                    <input type="text" name="Mcal" id="Mcal"><br>
+                </div>
+                <div class="cuis_input">
+                    <li><label for="Mdes">Description of the meal:</label></li><br>
+                    <textarea name="dec" id="Mdes" rows="6" cols="64" placeholder="Write a description here!"></textarea><br>
+                </div>
+                <button type="button" onclick="submitCuisine()">Submit</button>
+            </ul>
+        </form>
+    </fieldset>
+</main>
+
+<footer>
+    <h3>Contact Info :</h3>
+    <div id="contact">
+        <p>Phone Number: 05xxxxxxxxx</p>
+        <p>Email: TechFood@hotmail.com</p>
+        <img src="image/youtube.webp" class="icon" alt="youtube" width="35" height="35">
+        <img src="image/xx.PNG" class="icon" alt="X" width="35" height="25">
+        <img src="image/insta.webp" class="icon" alt="Instagram" width="35" height="35">
+        <img src="image/Facebook.PNG" class="icon" alt="Facebook" width="38" height="40">
+        <img src="image/linkedIn.PNG" class="icon" alt="LinkedIn" width="38" height="40">
+    </div>
+    <p id="copy">© 2024 Techfood</p>
+</footer>
+
+<script>
+    function submitCuisine() {
+        const name = document.getElementById('Mname').value.trim();
+        const photo = document.getElementById('Mphoto').files[0]; // File handling might need server-side processing or URL creation
+        const price = document.getElementById('Mpri').value.trim();
+        const calories = document.getElementById('Mcal').value.trim();
+        const description = document.getElementById('Mdes').value.trim();
+
+        if (!name || !photo || !price || !calories || !description) {
+            alert('Please fill out all fields.');
+            return;
+        }
+
+        let cuisines = JSON.parse(localStorage.getItem('cuisines')) || [];
+        cuisines.push({ name, photo: URL.createObjectURL(photo), price, calories, description });
+        localStorage.setItem('cuisines', JSON.stringify(cuisines));
+
+        alert('New cuisine added successfully!');
+        // Redirect or update the page as needed
+    }
+</script>
+
+</body>
+</html>

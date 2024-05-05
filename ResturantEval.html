@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>TechFood</title>
+   <link rel="stylesheet" href="project.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!--   <link rel="stylesheet" href="ResturantEvalStyle.css"> -->
+  <script src="alljs.js"></script>
+
+ 
+</head>
+<body>
+ <header>
+    <button id="theme-toggle">*theme*</button>
+
+    <img src="image/Tech.png" id="logo" alt="logo" width="180" height="180">
+    <h1 id="RestEval">Restaurant Evaluation Page</h1>
+<div id='navigation'>
+    <p> <a href="Owner's_Dashboard.html">Owner's_Dashboard</a>  |  <a href="Customer's_Dashboard.html">Customer's_Dashboard</a>   </p>
+</div>
+
+   
+        
+</header>
+<main>
+<form action="#" method="post" class="border" >
+
+    <div class="border">
+        <label for="Eval">Current Restaurant:</label>
+        <select id="previous_restaurant" name="previous_restaurant">
+            <option value="">Select...</option>
+            <option value="KFC">KFC</option>
+            <option value="Steak House">Steak House</option>
+            <option value="Finding Suchi">Finding sushi</option>
+            
+        </select>
+    </div>
+
+    <div class="border">
+        <label for="Experince">How was the whole experience?</label>
+        </div>
+        <div>
+            <input type="radio" id="experience_perfect" name="experience" value="perfect" checked>
+            <label for="perfect">Perfect</label>
+        </div>
+        
+        <div>
+            <input type="radio" id="experience_bad" name="experience" value="bad">
+            <label for="bad">Bad, I won't repeat it</label>
+        </div>
+    
+
+    <div class="border">
+        <label for="FoodExperince">How was the food experience?</label>
+        </div>
+        <div>
+            <input type="radio" id="experience_Fresh" name="experience1" value="Fresh">
+            <label for="hot">Hot and Fresh</label>
+        </div>
+        <div>
+            <input type="radio" id="experience_Cold" name="experience1" value="Cold">
+            <label for="cold">Cold, poor packaging</label>
+        </div>
+   
+
+    <div class="border">
+        <label for="delivery">Is the whole order delivered?</label>
+        </div>
+        <div>
+            <input type="radio" id="Yes" name="experience2" value="Yes">
+            <label for="Yes">Yes, all of it</label>
+        </div>
+        <div>
+            <input type="radio" id="No" name="experience2" value="No">
+            <label for="No">No, they forgot some dishes</label>
+        </div>
+    
+
+    
+        <label for="rating">Rating & Review</label>
+        <div class="rating" id="rating">
+            <i class="fas fa-star" data-rating="1"></i>
+            <i class="fas fa-star" data-rating="2"></i>
+            <i class="fas fa-star" data-rating="3"></i>
+            <i class="fas fa-star" data-rating="4"></i>
+            <i class="fas fa-star" data-rating="5"></i>
+        </div>
+        <input type="hidden" name="rating" id="selected-rating" required>
+        <textarea id="rating" name="rating" rows="4" required></textarea>
+    
+
+    <input type="submit" value="Submit" >
+    
+    
+    
+</form>
+
+<script>
+ document.addEventListener("DOMContentLoaded", function() {
+        // Function to validate form submission
+        function validateForm() {
+            const restaurantSelect = document.getElementById("previous_restaurant");
+            const ratingValue = document.getElementById("selected-rating").value;
+
+            if (restaurantSelect.value === "") {
+                alert("Please select a restaurant.");
+                return false;
+            }
+
+            if (ratingValue === "") {
+                alert("Please select a rating.");
+                return false;
+            }
+
+            return true;
+        }
+
+        // Event listener for star ratings
+        const stars = document.querySelectorAll('.rating i');
+        const ratingValue = document.getElementById('selected-rating');
+
+        stars.forEach((star) => {
+            star.addEventListener('click', () => {
+                const value = parseInt(star.getAttribute('data-rating'));
+
+                ratingValue.value = value;
+
+                stars.forEach((s, index) => {
+                    if (index < value) {
+                        s.classList.add('fas');
+                        s.classList.remove('far');
+                    } else {
+                        s.classList.remove('fas');
+                        s.classList.add('far');
+                    }
+                });
+            });
+        });
+
+        // Add event listener to form submission
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission by default
+
+            if (validateForm()) {
+             // Display alert message
+                const restaurantName = document.getElementById("previous_restaurant").value;
+                const userRating = document.getElementById("selected-rating").value;
+                alert(`Thank you for your feedback!\nYour rating for restaurant ${restaurantName} is ${userRating}`);
+               // this.submit(); // Submit the form if validation passes
+                 // Redirect to home page
+                window.location.href = "Home_page.html";
+            }
+        });
+        stars.forEach((star) => {
+            star.classList.add('far');
+            star.classList.remove('fas');
+        });
+    });
+</script>
+</main>
+
+
+
+
+ <footer>
+ 
+       <h3>Contact Info :</h3>
+         <div id="contact" >
+        <p>Phone Number: 05xxxxxxxxx</p>
+        <p>Email: TechFood@hotmail.com</p>
+        <img src="image/youtube.webp"  class="icon" alt="youtube" width="35" height="35">
+        <img src="image/xx.PNG" class="icon" alt="X" width="35" height="25">
+        <img src="image/insta.webp" class="icon" alt="Instagram" width="35" height="35">
+        <img src="image/Facebook.PNG" class="icon" alt="Facebook" width="38" height="40">
+        <img src="image/linkedIn.PNG" class="icon" alt="LinkedIn" width="38" height="40">
+        
+
+         </div>
+
+        <p id="copy"> &copy; 2024 Techfood</p>
+       </footer>
+      
+
+
+</body>
+</html>

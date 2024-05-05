@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechFood</title>
+ <link rel="stylesheet" href="project.css">
+ <script src="alljs.js"></script>
+
+</head> 
+
+<body>
+<header>
+  <button id="theme-toggle">*theme*</button>
+
+  <a href="Home_Page.html" ><img src="image/Tech.png" id="logo" alt="logo" width="180" height="180"> </a> 
+ 
+   <h1>Restaurant Page</h1>
+ 
+<div id='navigation'>
+    <p> <a href="Owner's_Dashboard.html">Owner's_Dashboard</a>  |  <a href="Customer's_Dashboard.html">Customer's_Dashboard</a>  </p>
+    </div>
+   
+    </header>
+    
+    
+    
+    
+    
+     
+
+ <div class="dropdown">
+    <select id="sortOptions" onchange="sortMeals()">
+      <option value="name-asc">Sort by Name A-Z</option>
+      <option value="name-desc">Sort by Name Z-A</option>
+      <option value="price-asc">Sort by Price Asc</option>
+      <option value="price-desc">Sort by Price Desc</option>
+    </select>
+  </div>
+</div>
+
+
+  
+
+ 
+
+ 
+ 
+ 
+ 
+ <main>
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ <div>
+ <img src="image/SteakHouseLOGO.jpeg"    alt="Rlogo" width="720" height="100"  class="centered" >
+
+   <h4 class="centered-text">Steak House</h2>
+  <p class="centered-text">Specializes in steaks and other meats, These sections are usually requested by the customer and usually come with the portion of potatoes and vegetables.</p>
+  </div>
+
+
+
+
+
+
+ <form action="#" class="menu">
+      <fieldset class="meal-category">
+        <legend>Sandwiches</legend>
+        <select name="sandwiches">
+          <optgroup label="Sandwiches">
+            <option value="Halomi">Halomi Sandwish </option>
+            <option value="cheese">Cheese Sandwich </option>
+            <option value="threeCheese">Three Cheese Sandwich </option>
+          </optgroup>
+        </select>
+      </fieldset>
+
+    
+    </form>
+ 
+  
+  
+  
+  
+  
+  
+  <div>
+    <section class="meal">
+
+    <img src="image/Halomi.jpeg"    alt="Rlogo" width="500" height="100" class="centered" >
+     <h4 class="centered-text">Halomi Sandwish </h2>
+<p class="centered-text">Halomi and pesto sandwish - 180 Calories</p> 
+<p class="centered-text meal-price">27 SR</p>
+
+
+      <div class="centered-buttons">
+      <input type="checkbox" name="meal" value="Halomi">
+       <button type="button" class="quantity-btn" onclick="updateQuantity('Halomi', 'increment')" >+</button>
+          <span id="HalomiQuantity">0</span>
+          <button type="button" class="quantity-btn" onclick="updateQuantity('Halomi', 'decrement')" >-</button>
+        </div>
+    </section>
+    </div>
+
+
+
+
+
+
+
+     <div>
+    <section class="meal">
+    <img src="image/cheese.jpeg"    alt="Rlogo" width="500" height="100" class="centered" >
+     <h4 class="centered-text">Cheese Sandwich</h2>
+  <p class="centered-text ">Cheddar cheese sandwish - 150 Calories</p> 
+  <p class="centered-text meal-price">33 SR</p> 
+   
+       <div class="centered-buttons">
+      <input type="checkbox" name="meal" value="cheese">
+       <button type="button" class="quantity-btn" onclick="updateQuantity('cheese', 'increment')">+</button>
+          <span id="cheeseQuantity">0</span>
+          <button type="button" class="quantity-btn" onclick="updateQuantity('cheese', 'decrement')">-</button>
+        </div>
+    </section>
+    </div>
+    
+    
+     <div>
+    <section class="meal">
+    <img src="image/threeCheese.jpeg"  alt="Rlogo" width="500" height="100" class="centered" >
+     <h4 class="centered-text">three cheese sandwish</h2>
+    <p class="centered-text ">Cheddar, Mozzarella and blue cheese sandwish - 300 Calories</p>
+    <p class="centered-text meal-price">30 SR</p>
+    
+     
+       <div class="centered-buttons">
+      <input type="checkbox" name="meal" value="threeCheese">
+       <button type="button" class="quantity-btn" onclick="updateQuantity('threeCheese', 'increment')">+</button>
+          <span id="threeCheeseQuantity">0</span>
+          <button type="button" class="quantity-btn" onclick="updateQuantity('threeCheese', 'decrement')">-</button>
+        </div>
+    </section>
+    </div>
+    
+    
+    
+   
+  
+
+  
+  
+  
+  
+    
+ <button class="cart-buttonnn" onclick="goToCart()">
+    <img src="image/cart.jpeg" alt="Cart" width="50" height="50">
+</button> 
+   
+   
+   
+   
+   
+   
+   
+   
+  </main>
+ 
+
+
+ <script>
+
+ function sortMeals() {
+  const selectedOption = document.getElementById("sortOptions").value;
+  const mealSections = document.querySelectorAll('.meal');
+  const mealList = Array.from(mealSections);
+
+  mealList.sort((a, b) => {
+    if (selectedOption === 'name-asc' || selectedOption === 'name-desc') {
+      // Sort alphabetically by meal name
+      const mealA = a.querySelector('h4').textContent.toUpperCase();
+      const mealB = b.querySelector('h4').textContent.toUpperCase();
+      return selectedOption === 'name-asc' ? mealA.localeCompare(mealB) : mealB.localeCompare(mealA);
+    } else {
+      // Sort by price
+      const priceA = parseInt(a.querySelector('.meal-price').textContent);
+      const priceB = parseInt(b.querySelector('.meal-price').textContent);
+      return selectedOption === 'price-asc' ? priceA - priceB : priceB - priceA;
+    }
+  });
+
+  mealList.forEach(meal => meal.parentNode.removeChild(meal));
+  mealList.forEach(meal => document.querySelector('.menu').appendChild(meal));
+}
+
+
+
+
+ // Function to update the quantity of meals
+  function updateQuantity(mealId, action) {
+    // Check if the checkbox for the meal is checked
+    const checkbox = document.querySelector(`input[name="meal"][value="${mealId}"]:checked`);
+    if (checkbox) {
+      const quantityElement = document.getElementById(mealId + 'Quantity');
+      let quantity = parseInt(quantityElement.textContent);
+      if (action === 'increment') {
+        quantity++;
+      } else if (action === 'decrement' && quantity > 0) {
+        quantity--;
+      }
+      quantityElement.textContent = quantity;
+    }
+  }
+
+  
+  
+  
+  
+  // Define an empty array to hold the cart items
+    let cartItems = [];
+
+    // Function to add selected meals to the cart
+    function addToCart() {
+      // Get all the meal sections
+      const mealSections = document.querySelectorAll('.meal');
+
+      // Iterate over each meal section
+      mealSections.forEach(mealSection => {
+        // Check if the checkbox is checked
+        const checkbox = mealSection.querySelector('input[type="checkbox"]');
+        if (checkbox.checked) {
+     const mealName = mealSection.querySelector('h4').textContent.trim();
+          const quantity = parseInt(mealSection.querySelector('span').textContent);
+
+          // Add the meal to the cart
+          cartItems.push({ mealName, quantity });
+
+          // Reset the quantity to 0
+          mealSection.querySelector('span').textContent = 0;
+          checkbox.checked = false; // Uncheck the checkbox
+        }
+      });
+
+      // Log the cart items (you can replace this with your logic to display the cart)
+      console.log(cartItems);
+    }
+ function goToCart() {
+      // Store cartItems in local storage
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+      // Redirect to cart page
+      window.location.href = 'cart_page.html';
+    }
+    
+      // Function to redirect to different pages based on the tab clicked
+    function navigateTo(page) {
+      window.location.href = page;
+    }
+  
+</script>
+
+ 
+ 
+ 
+
+
+ 
+ <div class="tab" onclick="navigateTo('cat3.html')">Meals</div>
+  <div class="tab" onclick="navigateTo('cat2.html')">Juice</div>
+  <div class="tab" onclick="navigateTo('cat4.html')">Dessert</div>
+ 
+ 
+
+    
+    
+    
+    
+    
+    
+     
+    
+    
+ 
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+ 
+
+ <footer>
+        <h3>Contact Info :</h3>
+         <div id="contact" >
+        <p>Phone Number: 05xxxxxxxxx</p>
+        <p>Email: TechFood@hotmail.com</p>
+        <img src="image/youtube.webp"  class="icon" alt="youtube" width="35" height="35">
+        <img src="image/xx.PNG" class="icon" alt="X" width="35" height="25">
+        <img src="image/insta.webp" class="icon" alt="Instagram" width="35" height="35">
+        <img src="image/Facebook.PNG" class="icon" alt="Facebook" width="38" height="40">
+        <img src="image/linkedIn.PNG" class="icon" alt="LinkedIn" width="38" height="40">
+        
+
+         </div>
+
+        <p id="copy"> &copy; 2024 Techfood</p>
+       </footer>
+      
+
+
+       <script>
+
+        function sortMeals() {
+         const selectedOption = document.getElementById("sortOptions").value;
+         const mealSections = document.querySelectorAll('.meal');
+         const mealList = Array.from(mealSections);
+       
+         mealList.sort((a, b) => {
+           if (selectedOption === 'name-asc' || selectedOption === 'name-desc') {
+             // Sort alphabetically by meal name
+             const mealA = a.querySelector('h4').textContent.toUpperCase();
+             const mealB = b.querySelector('h4').textContent.toUpperCase();
+             return selectedOption === 'name-asc' ? mealA.localeCompare(mealB) : mealB.localeCompare(mealA);
+           } else {
+             // Sort by price
+             const priceA = parseInt(a.querySelector('.meal-price').textContent);
+             const priceB = parseInt(b.querySelector('.meal-price').textContent);
+             return selectedOption === 'price-asc' ? priceA - priceB : priceB - priceA;
+           }
+         });
+       
+         mealList.forEach(meal => meal.parentNode.removeChild(meal));
+         mealList.forEach(meal => document.querySelector('.menu').appendChild(meal));
+       }
+       
+       
+       
+       
+        // Function to update the quantity of meals
+         function updateQuantity(mealId, action) {
+           // Check if the checkbox for the meal is checked
+           const checkbox = document.querySelector(input[name="meal"][value="${mealId}"]:checked);
+           if (checkbox) {
+             const quantityElement = document.getElementById(mealId + 'Quantity');
+             let quantity = parseInt(quantityElement.textContent);
+             if (action === 'increment') {
+               quantity++;
+             } else if (action === 'decrement' && quantity > 0) {
+               quantity--;
+             }
+             quantityElement.textContent = quantity;
+           }
+         }
+       
+         
+         
+         
+         
+         
+        // Function to update cart in local storage
+       function updateCart(itemName, quantity) {
+           let cart = JSON.parse(localStorage.getItem('cart')) || {};
+           if (quantity > 0) {
+               cart[itemName] = quantity;
+           } else {
+               delete cart[itemName]; // Remove the item if its quantity is zero
+           }
+           localStorage.setItem('cart', JSON.stringify(cart));
+       }
+       
+       // Function to navigate to the cart page
+       function goToCart() {
+       
+        // Store cart information in local storage before navigating to the cart page
+           const meals = document.querySelectorAll('.meal');
+           meals.forEach(meal => {
+             const mealId = meal.getAttribute('data-meal-id');
+             const quantity = parseInt(document.getElementById(mealId + 'Quantity').textContent);
+             updateCart(mealId, quantity);
+           });
+           // Function-based redirection
+         redirectToCartPage();
+       }
+       
+       // Function to redirect to the cart page
+       function redirectToCartPage() {
+         window.location.href = "cart_page.html";
+       }
+       
+       
+           
+            
+       
+         
+         
+         
+       </script>
+       
+     
+      </body>
+
+
+</html>
+
+
